@@ -1,0 +1,13 @@
+.box__itineraryHeader {
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 200px
+}
+.box__itineraryDestination {
+}
+.box__itineraryTraveler {
+  vertical-align: middle;
+  padding: 20px
+}
