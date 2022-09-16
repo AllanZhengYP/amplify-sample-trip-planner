@@ -18,6 +18,7 @@ const ItineraryContainer = (props) => {
     const day = date.getDate();
     return <Box sx={{display: "inline"}}>{weekday}, {month} {day}</Box>;
   };
+
   return <Container maxWidth="lg">
     <Box className={styles.box__itineraryHeader}>
       <Box className={styles.box__itineraryDestination}>
@@ -30,7 +31,7 @@ const ItineraryContainer = (props) => {
       </Box>
     </Box>
     <Box>
-    {props.children}
+      {props.children}
     </Box>
   </Container>
 }
