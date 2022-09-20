@@ -56,11 +56,12 @@ export const onCreateUser = /* GraphQL */ `
   subscription OnCreateUser {
     onCreateUser {
       id
-      email
-      name
+      preferredName
+      company
       plannedItins {
         items {
           id
+          destinationCity
           name
           description
           startDate
@@ -74,6 +75,7 @@ export const onCreateUser = /* GraphQL */ `
       viewItins {
         items {
           id
+          destinationCity
           name
           description
           startDate
@@ -93,11 +95,12 @@ export const onUpdateUser = /* GraphQL */ `
   subscription OnUpdateUser {
     onUpdateUser {
       id
-      email
-      name
+      preferredName
+      company
       plannedItins {
         items {
           id
+          destinationCity
           name
           description
           startDate
@@ -111,6 +114,7 @@ export const onUpdateUser = /* GraphQL */ `
       viewItins {
         items {
           id
+          destinationCity
           name
           description
           startDate
@@ -130,11 +134,12 @@ export const onDeleteUser = /* GraphQL */ `
   subscription OnDeleteUser {
     onDeleteUser {
       id
-      email
-      name
+      preferredName
+      company
       plannedItins {
         items {
           id
+          destinationCity
           name
           description
           startDate
@@ -148,6 +153,7 @@ export const onDeleteUser = /* GraphQL */ `
       viewItins {
         items {
           id
+          destinationCity
           name
           description
           startDate
@@ -167,6 +173,7 @@ export const onCreateItinarary = /* GraphQL */ `
   subscription OnCreateItinarary {
     onCreateItinarary {
       id
+      destinationCity
       name
       description
       startDate
@@ -197,6 +204,7 @@ export const onUpdateItinarary = /* GraphQL */ `
   subscription OnUpdateItinarary {
     onUpdateItinarary {
       id
+      destinationCity
       name
       description
       startDate
@@ -227,6 +235,7 @@ export const onDeleteItinarary = /* GraphQL */ `
   subscription OnDeleteItinarary {
     onDeleteItinarary {
       id
+      destinationCity
       name
       description
       startDate

@@ -23,15 +23,16 @@ type Activity @model @auth(rules: [{allow: public}]) {
 
 type User @model @auth(rules: [{allow: public}]) {
   id: ID!
-  email: AWSEmail!
-  name: String!
+  preferredName: String
+  company: String
   plannedItins: [Itinarary] @hasMany(indexName: "byUser", fields: ["id"])
   viewItins: [Itinarary] @hasMany(indexName: "byUser", fields: ["id"])
 }
 
 type Itinarary @model @auth(rules: [{allow: public}]) {
   id: ID!
-  name: String!
+  destinationCity: String!
+  name: String
   description: String
   startDate: AWSDate!
   endDate: AWSDate

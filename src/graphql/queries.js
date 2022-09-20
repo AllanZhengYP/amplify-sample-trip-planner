@@ -46,11 +46,12 @@ export const getUser = /* GraphQL */ `
   query GetUser($id: ID!) {
     getUser(id: $id) {
       id
-      email
-      name
+      preferredName
+      company
       plannedItins {
         items {
           id
+          destinationCity
           name
           description
           startDate
@@ -64,6 +65,7 @@ export const getUser = /* GraphQL */ `
       viewItins {
         items {
           id
+          destinationCity
           name
           description
           startDate
@@ -88,8 +90,8 @@ export const listUsers = /* GraphQL */ `
     listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        email
-        name
+        preferredName
+        company
         plannedItins {
           nextToken
         }
@@ -107,6 +109,7 @@ export const getItinarary = /* GraphQL */ `
   query GetItinarary($id: ID!) {
     getItinarary(id: $id) {
       id
+      destinationCity
       name
       description
       startDate
@@ -142,6 +145,7 @@ export const listItinararies = /* GraphQL */ `
     listItinararies(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
+        destinationCity
         name
         description
         startDate

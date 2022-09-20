@@ -1,7 +1,9 @@
 import ItineraryContainer from "../../components/ItineraryContainer";
 import ActivityCard from "../../components/ActivityCard";
+import { useRouter } from "next/router";
 
 const Trip = () => {
+  const {tripId}= useRouter().query;
   // TODO: remove
   const activities = [{activity: "I am an activity"}];
   const destination = "Seattle";

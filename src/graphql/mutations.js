@@ -68,11 +68,12 @@ export const createUser = /* GraphQL */ `
   ) {
     createUser(input: $input, condition: $condition) {
       id
-      email
-      name
+      preferredName
+      company
       plannedItins {
         items {
           id
+          destinationCity
           name
           description
           startDate
@@ -86,6 +87,7 @@ export const createUser = /* GraphQL */ `
       viewItins {
         items {
           id
+          destinationCity
           name
           description
           startDate
@@ -108,11 +110,12 @@ export const updateUser = /* GraphQL */ `
   ) {
     updateUser(input: $input, condition: $condition) {
       id
-      email
-      name
+      preferredName
+      company
       plannedItins {
         items {
           id
+          destinationCity
           name
           description
           startDate
@@ -126,6 +129,7 @@ export const updateUser = /* GraphQL */ `
       viewItins {
         items {
           id
+          destinationCity
           name
           description
           startDate
@@ -148,11 +152,12 @@ export const deleteUser = /* GraphQL */ `
   ) {
     deleteUser(input: $input, condition: $condition) {
       id
-      email
-      name
+      preferredName
+      company
       plannedItins {
         items {
           id
+          destinationCity
           name
           description
           startDate
@@ -166,6 +171,7 @@ export const deleteUser = /* GraphQL */ `
       viewItins {
         items {
           id
+          destinationCity
           name
           description
           startDate
@@ -188,6 +194,7 @@ export const createItinarary = /* GraphQL */ `
   ) {
     createItinarary(input: $input, condition: $condition) {
       id
+      destinationCity
       name
       description
       startDate
@@ -221,6 +228,7 @@ export const updateItinarary = /* GraphQL */ `
   ) {
     updateItinarary(input: $input, condition: $condition) {
       id
+      destinationCity
       name
       description
       startDate
@@ -254,6 +262,7 @@ export const deleteItinarary = /* GraphQL */ `
   ) {
     deleteItinarary(input: $input, condition: $condition) {
       id
+      destinationCity
       name
       description
       startDate
