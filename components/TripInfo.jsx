@@ -22,7 +22,7 @@ const TripInfo = ({ trip }) => {
     e.preventDefault();
     await API.graphql(graphqlOperation(mutations.createItinarary, {
       input: {
-        id: "mock-id",
+        id: "aaaaaaaaa",
         destinationCity: e.target.destinationCity.value,
         name: e.target.name.value,
         description: e.target.description.value,
