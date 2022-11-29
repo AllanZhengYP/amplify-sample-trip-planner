@@ -1,26 +1,6 @@
 {
-  "api": {
-    "amplifysampletrippla": {
-      "service": "AppSync",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [],
-      "output": {
-        "authConfig": {
-          "defaultAuthentication": {
-            "authenticationType": "API_KEY",
-            "apiKeyConfig": {
-              "apiKeyExpirationDays": 365,
-              "apiKeyExpirationDate": "2023-09-22T06:54:43.152Z",
-              "description": "TripPlannerAPIKey"
-            }
-          },
-          "additionalAuthenticationProviders": []
-        }
-      }
-    }
-  },
   "auth": {
-    "amplifysampletripplab619cfa9": {
+    "amplifysampletrippla08034bf608034bf6": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
@@ -31,7 +11,8 @@
           "EMAIL"
         ],
         "signupAttributes": [
-          "EMAIL"
+          "EMAIL",
+          "NAME"
         ],
         "passwordProtectionSettings": {
           "passwordPolicyMinLength": 8,
@@ -47,28 +28,44 @@
       }
     }
   },
-  "function": {
-    "S3Triggerc3c595d6": {
-      "service": "Lambda",
-      "providerPlugin": "awscloudformation",
-      "build": true
-    }
-  },
-  "storage": {
-    "tripplanerresources": {
-      "service": "S3",
+  "api": {
+    "amplifysampletrippla": {
+      "service": "AppSync",
       "providerPlugin": "awscloudformation",
       "dependsOn": [
         {
-          "category": "function",
-          "resourceName": "S3Triggerc3c595d6",
+          "category": "auth",
+          "resourceName": "amplifysampletrippla08034bf608034bf6",
           "attributes": [
-            "Name",
-            "Arn",
-            "LambdaExecutionRole"
+            "UserPoolId"
           ]
         }
-      ]
+      ],
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 7
+            }
+          },
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+              "userPoolConfig": {
+                "userPoolId": "authamplifysampletrippla08034bf608034bf6"
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "storage": {
+    "tripplannerstorage": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": []
     }
   }
 }

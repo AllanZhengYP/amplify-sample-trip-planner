@@ -49,12 +49,6 @@ const AppContainer = ({children}) => {
     return () => {};
   }, [user]);
 
-  useEffect(() => {
-    if (route === "signOut") {
-      router.replace("/");
-    }
-  }, [route]);
-
   const handleUserMenu = (event) => {
     setAnchorEl(event.currentTarget);
   }
@@ -67,7 +61,7 @@ const AppContainer = ({children}) => {
     if (Boolean(user)) {
       return <>
         <MenuItem sx={{color: "gray"}}>
-          <Link href='/profile'><a>{ preferredName }</a></Link>
+          <Link href='/profile'>{ preferredName }</Link>
         </MenuItem>
         <MenuItem onClick={async () => {
           signOut();
@@ -79,36 +73,38 @@ const AppContainer = ({children}) => {
     }
   }
 
-  return <Box>
-    <AppBar position="static" sx={{ marginBottom: "10px" }}>
-      <Toolbar>
-        <Link href={"/"}>
-          <Typography variant="h4" component="div" sx={{flexGrow: 1}}>TripId</Typography>
-        </Link>
-        <div>
-          <IconButton
-            onClick={handleUserMenu}
-            size="large"
-            color="inherit"
-            aria-haspopup="true"
-          >
-              {userIcon}
-          </IconButton>
-          <Menu
-            open={Boolean(anchorEl)}
-            anchorEl={anchorEl}
-            anchorOrigin={{vertical: "bottom", horizontal: "left"}}
-            transformOrigin={{vertical: "bottom", horizontal: "left"}}
-            onClose={handleUserMenuClose}
-            keepMounted
-          >
-            <UserMenuItems user={user} />
-          </Menu>
-        </div>
-      </Toolbar>
-    </AppBar>
-    {children}
-  </Box>
+  return (
+    <Box>
+      <AppBar position="static" sx={{ marginBottom: "10px" }}>
+        <Toolbar>
+          <Link href={"/"} legacyBehavior>
+            <Typography variant="h4" component="div" sx={{flexGrow: 1}}>TripId</Typography>
+          </Link>
+          <div>
+            <IconButton
+              onClick={handleUserMenu}
+              size="large"
+              color="inherit"
+              aria-haspopup="true"
+            >
+                {userIcon}
+            </IconButton>
+            <Menu
+              open={Boolean(anchorEl)}
+              anchorEl={anchorEl}
+              anchorOrigin={{vertical: "bottom", horizontal: "left"}}
+              transformOrigin={{vertical: "bottom", horizontal: "left"}}
+              onClose={handleUserMenuClose}
+              keepMounted
+            >
+              <UserMenuItems user={user} />
+            </Menu>
+          </div>
+        </Toolbar>
+      </AppBar>
+      {children}
+    </Box>
+  );
 }
 
 export default AppContainer;

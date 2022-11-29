@@ -1,13 +1,6 @@
 export type AmplifyDependentResourcesAttributes = {
-    "api": {
-        "amplifysampletrippla": {
-            "GraphQLAPIKeyOutput": "string",
-            "GraphQLAPIIdOutput": "string",
-            "GraphQLAPIEndpointOutput": "string"
-        }
-    },
     "auth": {
-        "amplifysampletripplab619cfa9": {
+        "amplifysampletrippla08034bf608034bf6": {
             "IdentityPoolId": "string",
             "IdentityPoolName": "string",
             "UserPoolId": "string",
@@ -17,16 +10,15 @@ export type AmplifyDependentResourcesAttributes = {
             "AppClientID": "string"
         }
     },
-    "function": {
-        "S3Triggerc3c595d6": {
-            "Name": "string",
-            "Arn": "string",
-            "Region": "string",
-            "LambdaExecutionRole": "string"
+    "api": {
+        "amplifysampletrippla": {
+            "GraphQLAPIKeyOutput": "string",
+            "GraphQLAPIIdOutput": "string",
+            "GraphQLAPIEndpointOutput": "string"
         }
     },
     "storage": {
-        "tripplanerresources": {
+        "tripplannerstorage": {
             "BucketName": "string",
             "Region": "string"
         }

@@ -15,12 +15,24 @@ export const createActivity = /* GraphQL */ `
       type
       location
       confirmation
-      itinararyID
+      itinarary {
+        id
+        destinationCity
+        name
+        description
+        startDate
+        endDate
+        Activities {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        userPlannedItinsId
+      }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+      itinararyActivitiesId
+      itinararyActivitiesStartDate
     }
   }
 `;
@@ -38,12 +50,24 @@ export const updateActivity = /* GraphQL */ `
       type
       location
       confirmation
-      itinararyID
+      itinarary {
+        id
+        destinationCity
+        name
+        description
+        startDate
+        endDate
+        Activities {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        userPlannedItinsId
+      }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+      itinararyActivitiesId
+      itinararyActivitiesStartDate
     }
   }
 `;
@@ -61,171 +85,24 @@ export const deleteActivity = /* GraphQL */ `
       type
       location
       confirmation
-      itinararyID
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const createUser = /* GraphQL */ `
-  mutation CreateUser(
-    $input: CreateUserInput!
-    $condition: ModelUserConditionInput
-  ) {
-    createUser(input: $input, condition: $condition) {
-      id
-      preferredName
-      company
-      plannedItins {
-        items {
-          id
-          destinationCity
-          name
-          description
-          startDate
-          endDate
-          userID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
+      itinarary {
+        id
+        destinationCity
+        name
+        description
+        startDate
+        endDate
+        Activities {
+          nextToken
         }
-        nextToken
-        startedAt
-      }
-      viewItins {
-        items {
-          id
-          destinationCity
-          name
-          description
-          startDate
-          endDate
-          userID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        nextToken
-        startedAt
+        createdAt
+        updatedAt
+        userPlannedItinsId
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const updateUser = /* GraphQL */ `
-  mutation UpdateUser(
-    $input: UpdateUserInput!
-    $condition: ModelUserConditionInput
-  ) {
-    updateUser(input: $input, condition: $condition) {
-      id
-      preferredName
-      company
-      plannedItins {
-        items {
-          id
-          destinationCity
-          name
-          description
-          startDate
-          endDate
-          userID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        nextToken
-        startedAt
-      }
-      viewItins {
-        items {
-          id
-          destinationCity
-          name
-          description
-          startDate
-          endDate
-          userID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const deleteUser = /* GraphQL */ `
-  mutation DeleteUser(
-    $input: DeleteUserInput!
-    $condition: ModelUserConditionInput
-  ) {
-    deleteUser(input: $input, condition: $condition) {
-      id
-      preferredName
-      company
-      plannedItins {
-        items {
-          id
-          destinationCity
-          name
-          description
-          startDate
-          endDate
-          userID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        nextToken
-        startedAt
-      }
-      viewItins {
-        items {
-          id
-          destinationCity
-          name
-          description
-          startDate
-          endDate
-          userID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+      itinararyActivitiesId
+      itinararyActivitiesStartDate
     }
   }
 `;
@@ -251,22 +128,16 @@ export const createItinarary = /* GraphQL */ `
           type
           location
           confirmation
-          itinararyID
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
+          itinararyActivitiesId
+          itinararyActivitiesStartDate
         }
         nextToken
-        startedAt
       }
-      userID
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+      userPlannedItinsId
     }
   }
 `;
@@ -292,22 +163,16 @@ export const updateItinarary = /* GraphQL */ `
           type
           location
           confirmation
-          itinararyID
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
+          itinararyActivitiesId
+          itinararyActivitiesStartDate
         }
         nextToken
-        startedAt
       }
-      userID
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+      userPlannedItinsId
     }
   }
 `;
@@ -333,22 +198,103 @@ export const deleteItinarary = /* GraphQL */ `
           type
           location
           confirmation
-          itinararyID
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
+          itinararyActivitiesId
+          itinararyActivitiesStartDate
         }
         nextToken
-        startedAt
       }
-      userID
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+      userPlannedItinsId
+    }
+  }
+`;
+export const createUser = /* GraphQL */ `
+  mutation CreateUser(
+    $input: CreateUserInput!
+    $condition: ModelUserConditionInput
+  ) {
+    createUser(input: $input, condition: $condition) {
+      id
+      preferredName
+      company
+      plannedItins {
+        items {
+          id
+          destinationCity
+          name
+          description
+          startDate
+          endDate
+          createdAt
+          updatedAt
+          userPlannedItinsId
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const updateUser = /* GraphQL */ `
+  mutation UpdateUser(
+    $input: UpdateUserInput!
+    $condition: ModelUserConditionInput
+  ) {
+    updateUser(input: $input, condition: $condition) {
+      id
+      preferredName
+      company
+      plannedItins {
+        items {
+          id
+          destinationCity
+          name
+          description
+          startDate
+          endDate
+          createdAt
+          updatedAt
+          userPlannedItinsId
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const deleteUser = /* GraphQL */ `
+  mutation DeleteUser(
+    $input: DeleteUserInput!
+    $condition: ModelUserConditionInput
+  ) {
+    deleteUser(input: $input, condition: $condition) {
+      id
+      preferredName
+      company
+      plannedItins {
+        items {
+          id
+          destinationCity
+          name
+          description
+          startDate
+          endDate
+          createdAt
+          updatedAt
+          userPlannedItinsId
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+      owner
     }
   }
 `;

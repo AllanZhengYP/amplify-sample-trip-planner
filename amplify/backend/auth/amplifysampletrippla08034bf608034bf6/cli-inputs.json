@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "amplifysampletripplab619cfa9_identitypool_b619cfa9",
+    "identityPoolName": "amplifysampletrippla08034bf6_identitypool_08034bf6",
     "allowUnauthenticatedIdentities": true,
-    "resourceNameTruncated": "amplifb619cfa9",
-    "userPoolName": "amplifysampletripplab619cfa9_userpool_b619cfa9",
+    "resourceNameTruncated": "amplif08034bf6",
+    "userPoolName": "amplifysampletrippla08034bf6_userpool_08034bf6",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -20,43 +20,44 @@
     "passwordPolicyMinLength": 8,
     "passwordPolicyCharacters": [],
     "requiredAttributes": [
-      "email"
+      "email",
+      "name"
     ],
     "aliasAttributes": [],
     "userpoolClientGenerateSecret": false,
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [
-      "email"
+      "email",
+      "name"
     ],
     "userpoolClientReadAttributes": [
-      "email"
+      "email",
+      "family_name",
+      "middle_name",
+      "locale",
+      "given_name",
+      "name",
+      "phone_number",
+      "preferred_username",
+      "picture"
     ],
-    "userpoolClientLambdaRole": "amplifb619cfa9_userpoolclient_lambda_role",
-    "userpoolClientSetAttributes": false,
-    "sharedId": "b619cfa9",
-    "resourceName": "amplifysampletripplab619cfa9",
+    "userpoolClientLambdaRole": "amplif08034bf6_userpoolclient_lambda_role",
+    "userpoolClientSetAttributes": true,
+    "sharedId": "08034bf6",
+    "resourceName": "amplifysampletrippla08034bf608034bf6",
     "authSelections": "identityPoolAndUserPool",
-    "useDefault": "default",
+    "useDefault": "manual",
+    "thirdPartyAuth": false,
     "usernameAttributes": [
       "email"
     ],
+    "userPoolGroups": false,
+    "adminQueries": false,
+    "triggers": {},
+    "hostedUI": false,
     "userPoolGroupList": [],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,
-    "useEnabledMfas": true,
-    "authRoleArn": {
-      "Fn::GetAtt": [
-        "AuthRole",
-        "Arn"
-      ]
-    },
-    "unauthRoleArn": {
-      "Fn::GetAtt": [
-        "UnauthRole",
-        "Arn"
-      ]
-    },
-    "breakCircularDependency": true,
-    "dependsOn": []
+    "useEnabledMfas": true
   }
-}
+} 

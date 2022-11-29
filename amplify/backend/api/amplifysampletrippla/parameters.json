@@ -2,5 +2,10 @@
   "AppSyncApiName": "amplifysampletrippla",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false,
-  "AuthModeLastUpdated": "2022-09-22T06:54:51.069Z"
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authamplifysampletrippla08034bf608034bf6",
+      "Outputs.UserPoolId"
+    ]
+  }
 }

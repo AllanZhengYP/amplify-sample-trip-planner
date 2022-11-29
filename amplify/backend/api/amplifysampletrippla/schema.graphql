@@ -10,7 +10,7 @@ enum ActivitTypes {
 }
 
 type Activity @model @auth(rules: [{allow: public}]) {
-  id: ID!
+  id: ID! @primaryKey(sortKeyFields: ["startTime"])
   startTime: AWSDateTime!
   endTime: AWSDateTime
   name: String!
@@ -18,24 +18,23 @@ type Activity @model @auth(rules: [{allow: public}]) {
   type: ActivitTypes!
   location: String
   confirmation: String
-  itinararyID: ID! @index(name: "byItinarary")
+  itinarary: Itinarary @belongsTo
 }
 
-type User @model @auth(rules: [{allow: public}]) {
+type User @model @auth(rules: [{allow: owner}]) {
   id: ID!
   preferredName: String
   company: String
-  plannedItins: [Itinarary] @hasMany(indexName: "byUser", fields: ["id"])
-  viewItins: [Itinarary] @hasMany(indexName: "byUser", fields: ["id"])
+  plannedItins: [Itinarary] @hasMany
+  # viewItins: [Itinarary] @hasMany(indexName: "byUser", fields: ["id"]) # implement sharing iternary later
 }
 
 type Itinarary @model @auth(rules: [{allow: public}]) {
-  id: ID!
+  id: ID! @primaryKey(sortKeyFields: ["startDate"])
   destinationCity: String!
   name: String
   description: String
   startDate: AWSDate!
   endDate: AWSDate
-  Activities: [Activity] @hasMany(indexName: "byItinarary", fields: ["id"])
-  userID: ID! @index(name: "byUser")
+  Activities: [Activity] @hasMany
 }

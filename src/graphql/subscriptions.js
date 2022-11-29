@@ -2,8 +2,8 @@
 // this is an auto generated file. This will be overwritten
 
 export const onCreateActivity = /* GraphQL */ `
-  subscription OnCreateActivity {
-    onCreateActivity {
+  subscription OnCreateActivity($filter: ModelSubscriptionActivityFilterInput) {
+    onCreateActivity(filter: $filter) {
       id
       startTime
       endTime
@@ -12,18 +12,30 @@ export const onCreateActivity = /* GraphQL */ `
       type
       location
       confirmation
-      itinararyID
+      itinarary {
+        id
+        destinationCity
+        name
+        description
+        startDate
+        endDate
+        Activities {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        userPlannedItinsId
+      }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+      itinararyActivitiesId
+      itinararyActivitiesStartDate
     }
   }
 `;
 export const onUpdateActivity = /* GraphQL */ `
-  subscription OnUpdateActivity {
-    onUpdateActivity {
+  subscription OnUpdateActivity($filter: ModelSubscriptionActivityFilterInput) {
+    onUpdateActivity(filter: $filter) {
       id
       startTime
       endTime
@@ -32,18 +44,30 @@ export const onUpdateActivity = /* GraphQL */ `
       type
       location
       confirmation
-      itinararyID
+      itinarary {
+        id
+        destinationCity
+        name
+        description
+        startDate
+        endDate
+        Activities {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        userPlannedItinsId
+      }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+      itinararyActivitiesId
+      itinararyActivitiesStartDate
     }
   }
 `;
 export const onDeleteActivity = /* GraphQL */ `
-  subscription OnDeleteActivity {
-    onDeleteActivity {
+  subscription OnDeleteActivity($filter: ModelSubscriptionActivityFilterInput) {
+    onDeleteActivity(filter: $filter) {
       id
       startTime
       endTime
@@ -52,168 +76,32 @@ export const onDeleteActivity = /* GraphQL */ `
       type
       location
       confirmation
-      itinararyID
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const onCreateUser = /* GraphQL */ `
-  subscription OnCreateUser {
-    onCreateUser {
-      id
-      preferredName
-      company
-      plannedItins {
-        items {
-          id
-          destinationCity
-          name
-          description
-          startDate
-          endDate
-          userID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
+      itinarary {
+        id
+        destinationCity
+        name
+        description
+        startDate
+        endDate
+        Activities {
+          nextToken
         }
-        nextToken
-        startedAt
-      }
-      viewItins {
-        items {
-          id
-          destinationCity
-          name
-          description
-          startDate
-          endDate
-          userID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        nextToken
-        startedAt
+        createdAt
+        updatedAt
+        userPlannedItinsId
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const onUpdateUser = /* GraphQL */ `
-  subscription OnUpdateUser {
-    onUpdateUser {
-      id
-      preferredName
-      company
-      plannedItins {
-        items {
-          id
-          destinationCity
-          name
-          description
-          startDate
-          endDate
-          userID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        nextToken
-        startedAt
-      }
-      viewItins {
-        items {
-          id
-          destinationCity
-          name
-          description
-          startDate
-          endDate
-          userID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const onDeleteUser = /* GraphQL */ `
-  subscription OnDeleteUser {
-    onDeleteUser {
-      id
-      preferredName
-      company
-      plannedItins {
-        items {
-          id
-          destinationCity
-          name
-          description
-          startDate
-          endDate
-          userID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        nextToken
-        startedAt
-      }
-      viewItins {
-        items {
-          id
-          destinationCity
-          name
-          description
-          startDate
-          endDate
-          userID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+      itinararyActivitiesId
+      itinararyActivitiesStartDate
     }
   }
 `;
 export const onCreateItinarary = /* GraphQL */ `
-  subscription OnCreateItinarary {
-    onCreateItinarary {
+  subscription OnCreateItinarary(
+    $filter: ModelSubscriptionItinararyFilterInput
+  ) {
+    onCreateItinarary(filter: $filter) {
       id
       destinationCity
       name
@@ -230,28 +118,24 @@ export const onCreateItinarary = /* GraphQL */ `
           type
           location
           confirmation
-          itinararyID
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
+          itinararyActivitiesId
+          itinararyActivitiesStartDate
         }
         nextToken
-        startedAt
       }
-      userID
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+      userPlannedItinsId
     }
   }
 `;
 export const onUpdateItinarary = /* GraphQL */ `
-  subscription OnUpdateItinarary {
-    onUpdateItinarary {
+  subscription OnUpdateItinarary(
+    $filter: ModelSubscriptionItinararyFilterInput
+  ) {
+    onUpdateItinarary(filter: $filter) {
       id
       destinationCity
       name
@@ -268,28 +152,24 @@ export const onUpdateItinarary = /* GraphQL */ `
           type
           location
           confirmation
-          itinararyID
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
+          itinararyActivitiesId
+          itinararyActivitiesStartDate
         }
         nextToken
-        startedAt
       }
-      userID
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+      userPlannedItinsId
     }
   }
 `;
 export const onDeleteItinarary = /* GraphQL */ `
-  subscription OnDeleteItinarary {
-    onDeleteItinarary {
+  subscription OnDeleteItinarary(
+    $filter: ModelSubscriptionItinararyFilterInput
+  ) {
+    onDeleteItinarary(filter: $filter) {
       id
       destinationCity
       name
@@ -306,22 +186,103 @@ export const onDeleteItinarary = /* GraphQL */ `
           type
           location
           confirmation
-          itinararyID
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
+          itinararyActivitiesId
+          itinararyActivitiesStartDate
         }
         nextToken
-        startedAt
       }
-      userID
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+      userPlannedItinsId
+    }
+  }
+`;
+export const onCreateUser = /* GraphQL */ `
+  subscription OnCreateUser(
+    $filter: ModelSubscriptionUserFilterInput
+    $owner: String
+  ) {
+    onCreateUser(filter: $filter, owner: $owner) {
+      id
+      preferredName
+      company
+      plannedItins {
+        items {
+          id
+          destinationCity
+          name
+          description
+          startDate
+          endDate
+          createdAt
+          updatedAt
+          userPlannedItinsId
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const onUpdateUser = /* GraphQL */ `
+  subscription OnUpdateUser(
+    $filter: ModelSubscriptionUserFilterInput
+    $owner: String
+  ) {
+    onUpdateUser(filter: $filter, owner: $owner) {
+      id
+      preferredName
+      company
+      plannedItins {
+        items {
+          id
+          destinationCity
+          name
+          description
+          startDate
+          endDate
+          createdAt
+          updatedAt
+          userPlannedItinsId
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const onDeleteUser = /* GraphQL */ `
+  subscription OnDeleteUser(
+    $filter: ModelSubscriptionUserFilterInput
+    $owner: String
+  ) {
+    onDeleteUser(filter: $filter, owner: $owner) {
+      id
+      preferredName
+      company
+      plannedItins {
+        items {
+          id
+          destinationCity
+          name
+          description
+          startDate
+          endDate
+          createdAt
+          updatedAt
+          userPlannedItinsId
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+      owner
     }
   }
 `;

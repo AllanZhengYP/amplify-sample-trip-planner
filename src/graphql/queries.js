@@ -2,8 +2,8 @@
 // this is an auto generated file. This will be overwritten
 
 export const getActivity = /* GraphQL */ `
-  query GetActivity($id: ID!) {
-    getActivity(id: $id) {
+  query GetActivity($id: ID!, $startTime: AWSDateTime!) {
+    getActivity(id: $id, startTime: $startTime) {
       id
       startTime
       endTime
@@ -12,55 +12,43 @@ export const getActivity = /* GraphQL */ `
       type
       location
       confirmation
-      itinararyID
+      itinarary {
+        id
+        destinationCity
+        name
+        description
+        startDate
+        endDate
+        Activities {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        userPlannedItinsId
+      }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+      itinararyActivitiesId
+      itinararyActivitiesStartDate
     }
   }
 `;
 export const listActivities = /* GraphQL */ `
   query ListActivities(
+    $id: ID
+    $startTime: ModelStringKeyConditionInput
     $filter: ModelActivityFilterInput
     $limit: Int
     $nextToken: String
+    $sortDirection: ModelSortDirection
   ) {
-    listActivities(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        startTime
-        endTime
-        name
-        description
-        type
-        location
-        confirmation
-        itinararyID
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const syncActivities = /* GraphQL */ `
-  query SyncActivities(
-    $filter: ModelActivityFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncActivities(
+    listActivities(
+      id: $id
+      startTime: $startTime
       filter: $filter
       limit: $limit
       nextToken: $nextToken
-      lastSync: $lastSync
+      sortDirection: $sortDirection
     ) {
       items {
         id
@@ -71,15 +59,90 @@ export const syncActivities = /* GraphQL */ `
         type
         location
         confirmation
-        itinararyID
+        itinarary {
+          id
+          destinationCity
+          name
+          description
+          startDate
+          endDate
+          createdAt
+          updatedAt
+          userPlannedItinsId
+        }
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
+        itinararyActivitiesId
+        itinararyActivitiesStartDate
       }
       nextToken
-      startedAt
+    }
+  }
+`;
+export const getItinarary = /* GraphQL */ `
+  query GetItinarary($id: ID!, $startDate: AWSDate!) {
+    getItinarary(id: $id, startDate: $startDate) {
+      id
+      destinationCity
+      name
+      description
+      startDate
+      endDate
+      Activities {
+        items {
+          id
+          startTime
+          endTime
+          name
+          description
+          type
+          location
+          confirmation
+          createdAt
+          updatedAt
+          itinararyActivitiesId
+          itinararyActivitiesStartDate
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+      userPlannedItinsId
+    }
+  }
+`;
+export const listItinararies = /* GraphQL */ `
+  query ListItinararies(
+    $id: ID
+    $startDate: ModelStringKeyConditionInput
+    $filter: ModelItinararyFilterInput
+    $limit: Int
+    $nextToken: String
+    $sortDirection: ModelSortDirection
+  ) {
+    listItinararies(
+      id: $id
+      startDate: $startDate
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      sortDirection: $sortDirection
+    ) {
+      items {
+        id
+        destinationCity
+        name
+        description
+        startDate
+        endDate
+        Activities {
+          nextToken
+        }
+        createdAt
+        updatedAt
+        userPlannedItinsId
+      }
+      nextToken
     }
   }
 `;
@@ -97,39 +160,15 @@ export const getUser = /* GraphQL */ `
           description
           startDate
           endDate
-          userID
           createdAt
           updatedAt
-          _version
-          _deleted
-          _lastChangedAt
+          userPlannedItinsId
         }
         nextToken
-        startedAt
-      }
-      viewItins {
-        items {
-          id
-          destinationCity
-          name
-          description
-          startDate
-          endDate
-          userID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        nextToken
-        startedAt
       }
       createdAt
       updatedAt
-      _version
-      _deleted
-      _lastChangedAt
+      owner
     }
   }
 `;
@@ -146,160 +185,12 @@ export const listUsers = /* GraphQL */ `
         company
         plannedItins {
           nextToken
-          startedAt
-        }
-        viewItins {
-          nextToken
-          startedAt
         }
         createdAt
         updatedAt
-        _version
-        _deleted
-        _lastChangedAt
+        owner
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncUsers = /* GraphQL */ `
-  query SyncUsers(
-    $filter: ModelUserFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncUsers(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        preferredName
-        company
-        plannedItins {
-          nextToken
-          startedAt
-        }
-        viewItins {
-          nextToken
-          startedAt
-        }
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const getItinarary = /* GraphQL */ `
-  query GetItinarary($id: ID!) {
-    getItinarary(id: $id) {
-      id
-      destinationCity
-      name
-      description
-      startDate
-      endDate
-      Activities {
-        items {
-          id
-          startTime
-          endTime
-          name
-          description
-          type
-          location
-          confirmation
-          itinararyID
-          createdAt
-          updatedAt
-          _version
-          _deleted
-          _lastChangedAt
-        }
-        nextToken
-        startedAt
-      }
-      userID
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-    }
-  }
-`;
-export const listItinararies = /* GraphQL */ `
-  query ListItinararies(
-    $filter: ModelItinararyFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listItinararies(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        destinationCity
-        name
-        description
-        startDate
-        endDate
-        Activities {
-          nextToken
-          startedAt
-        }
-        userID
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
-export const syncItinararies = /* GraphQL */ `
-  query SyncItinararies(
-    $filter: ModelItinararyFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncItinararies(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        destinationCity
-        name
-        description
-        startDate
-        endDate
-        Activities {
-          nextToken
-          startedAt
-        }
-        userID
-        createdAt
-        updatedAt
-        _version
-        _deleted
-        _lastChangedAt
-      }
-      nextToken
-      startedAt
     }
   }
 `;

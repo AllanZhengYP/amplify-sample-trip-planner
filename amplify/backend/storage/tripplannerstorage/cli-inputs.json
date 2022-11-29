@@ -1,0 +1,16 @@
+{
+  "resourceName": "tripplannerstorage",
+  "policyUUID": "336b8624",
+  "bucketName": "amplifysampletrippla2dfd7308f04a45e796b50a73fb0",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}
